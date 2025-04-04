@@ -1,0 +1,21 @@
+backend/
+│── main.py                   # FastAPI 入口
+│── config.py                 # 設定檔 (如 CORS、環境變數)
+│── database.py               # 資料庫連線
+│── models/                   # 存放 SQLAlchemy 模型
+│   ├── user.py
+│   ├── survey.py
+│── schemas/                  # 存放 Pydantic 的 Request/Response Schema
+│   ├── user.py
+│   ├── survey.py
+│── routers/                  # FastAPI 的 API 路由
+│   ├── user.py
+│   ├── survey.py
+│── services/                 # 業務邏輯層 (Business Logic)
+│   ├── user_service.py
+│   ├── survey_service.py
+│── utils/                    # 通用工具函式
+│   ├── security.py            # 密碼雜湊、驗證
+│── static/                   # 靜態檔案
+│── templates/                # HTML 模板 (如果有)
+└── .env                      # 環境變數

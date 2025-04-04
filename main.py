@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from routers import loginO
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import os
@@ -25,7 +26,7 @@ if not os.path.exists(FRONTEND_DIST_PATH):
 
 # Serve React build static files
 app.mount("/assets", StaticFiles(directory=os.path.join(FRONTEND_DIST_PATH, "assets")), name="assets")
-
+app.include_router(router=loginO.router,prefix="/api/auth")
 # Define the structure of the survey data
 class SurveyData(BaseModel):
     name: str
