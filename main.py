@@ -19,7 +19,7 @@ app.add_middleware(
 )
 
 # 設定前端目錄
-FRONTEND_DIST_PATH = r"C:\Users\XYLee\Desktop\Programming\heart_key_website_fe\dist"
+FRONTEND_DIST_PATH = r"C:\Users\{user_name}\Desktop\Programming\heart_key_website_fe\dist"
 if not os.path.exists(FRONTEND_DIST_PATH):
     raise RuntimeError(f"Directory '{FRONTEND_DIST_PATH}' does not exist")
 
