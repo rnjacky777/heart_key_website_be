@@ -1,0 +1,34 @@
+下載：https://www.wireguard.com/install/
+安裝後，開啟 WireGuard GUI
+
+server.conf
+---------------------------------
+[Interface]
+PrivateKey = <伺服器私鑰>
+Address = 10.0.0.1/24
+ListenPort = 51820
+
+[Peer]
+PublicKey = <客戶端公鑰>
+AllowedIPs = 10.0.0.2/32
+---------------------------------
+
+
+建立客戶筆電端設定
+---------------------------------
+[Interface]
+PrivateKey = <筆電私鑰>
+Address = 10.0.0.2/24
+DNS = 10.0.0.1
+
+[Peer]
+PublicKey = <伺服器公鑰>
+Endpoint = <公司固定IP或動態DNS>:51820
+AllowedIPs = 0.0.0.0/0
+PersistentKeepalive = 25
+---------------------------------
+
+
+
+防火牆:僅允許 51820 (VPN) 與 443 (HTTPS)
+監控與日誌:開啟 FastAPI 與 Nginx 的 access log

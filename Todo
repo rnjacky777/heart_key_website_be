@@ -1,0 +1,68 @@
+VPN: WireGuard or OpenVPN , Prefer using WireGuard
+FE : React
+BE: FastApi
+Infra: Windows, HTTPS, NGX
+
+uvicorn main:app --host 0.0.0.0 --port 443 \
+  --ssl-keyfile="key.pem" \
+  --ssl-certfile="cert.pem"
+
+
+Structure
+project/
+├─ frontend/        # React app
+├─ backend/         # FastAPI app
+│  ├─ main.py
+│  ├─ ...
+├─ certs/           # 憑證存放
+│  ├─ cert.pem
+│  └─ key.pem
+└─ deploy/          # 未來可放 docker/nginx 設定
+
+
+Install step
+
+pip install fastapi uvicorn[standard]
+
+
+
+
+2.Pyenv + venv
+  -  pyenv-win
+Invoke-WebRequest -UseBasicParsing -Uri https://pyenv.run -OutFile pyenv-installer.ps1
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+.\pyenv-installer.ps1
+
+pyenv --version
+pyenv install 3.10.11
+
+- venv
+python -m venv venv
+venv\Scripts\activate
+deactivate
+
+
+🔧 寫好完整的 nginx.conf + main.py
+
+📄 產生 WireGuard server/client 設定
+
+🧪 測試 HTTPS 自簽憑證
+
+⚙️ 寫成 Windows 啟動腳本（或建立 Windows Service）
+
+
+project/
+├─ frontend/        # React app
+├─ backend/         # FastAPI app
+│  ├─ main.py
+│  ├─ ...
+├─ certs/           # 憑證存放
+│  ├─ cert.pem
+│  └─ key.pem
+└─ deploy/          # 未來可放 docker/nginx 設定
+
+
+
+npx create-react-app frontend
+cd frontend
+npm start
